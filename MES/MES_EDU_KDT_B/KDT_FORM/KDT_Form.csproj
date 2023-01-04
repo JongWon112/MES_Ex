@@ -48,6 +48,12 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="MM_MaterialOrder[구매자재발주및입고].cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MM_MaterialOrder[구매자재발주및입고].Designer.cs">
+      <DependentUpon>MM_MaterialOrder[구매자재발주및입고].cs</DependentUpon>
+    </Compile>
     <Compile Include="AP_ProductPlan[생산계획및작지확정].cs">
       <SubType>Form</SubType>
     </Compile>
@@ -160,6 +166,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="MM_MaterialOrder[구매자재발주및입고].resx">
+      <DependentUpon>MM_MaterialOrder[구매자재발주및입고].cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AP_ProductPlan[생산계획및작지확정].resx">
       <DependentUpon>AP_ProductPlan[생산계획및작지확정].cs</DependentUpon>
     </EmbeddedResource>

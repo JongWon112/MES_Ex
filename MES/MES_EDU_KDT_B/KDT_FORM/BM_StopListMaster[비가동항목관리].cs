@@ -83,7 +83,7 @@ namespace KDT_Form
                 string sUseFlag = Convert.ToString(cboUseFlag.Value);
 
                 DataTable dtTemp = new DataTable();
-                dtTemp = helper.FillTable("04BM_StopListMaster_S1", CommandType.StoredProcedure
+                dtTemp = helper.FillTable("04IDBM_StopListMaster_S1", CommandType.StoredProcedure
                                            , helper.CreateParameter("PLANTCODE", sPlantCode)
                                            , helper.CreateParameter("STOPCODE", sStopCode)
                                            , helper.CreateParameter("STOPNAME", sStopName)

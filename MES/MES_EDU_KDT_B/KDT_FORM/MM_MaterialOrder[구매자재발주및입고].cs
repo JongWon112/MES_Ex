@@ -1,9 +1,9 @@
 ﻿#region < HEADER AREA >
 // *---------------------------------------------------------------------------------------------*
-//   Form ID      : AP_ProductPlan
-//   Form Name    : 생산계획 편성 및 작업지시 확정
+//   Form ID      : MM_MaterialOrder
+//   Form Name    : 구매자재 발주 및 입고
 //   Name Space   : KDT_Form
-//   Created Date : 2023-01-03
+//   Created Date : 2023-01-04
 //   Made By      : 이종원
 //   Description  : 최초 프로그램 생성
 // *---------------------------------------------------------------------------------------------*
@@ -21,11 +21,11 @@ using System.Windows.Forms;
 
 namespace KDT_Form
 {
-    public partial class AP_ProductPlan : DC00_WinForm.BaseMDIChildForm
+    public partial class MM_MaterialOrder : DC00_WinForm.BaseMDIChildForm
     {
         #region < MEMBER AREA >
         UltraGridUtil GridUtil = new UltraGridUtil(); //그리드를 셋팅하는 클래스
-        public AP_ProductPlan()
+        public MM_MaterialOrder()
         {
             InitializeComponent();
         }
@@ -33,32 +33,32 @@ namespace KDT_Form
 
         #region < EVENT AREA >
 
-        private void AP_ProductPlan_Load(object sender, EventArgs e)
+        private void MM_MaterialOrder_Load(object sender, EventArgs e)
         {
              // 1. 그리드 셋팅
            
             GridUtil.InitializeGrid(grid1); //그리드 초기화
-           GridUtil.InitColumnUltraGrid(grid1, "PLANTCODE",      "공장",          GridColDataType_emu.VarChar,    100, HAlign.Left,  true, true);
+            GridUtil.InitColumnUltraGrid(grid1, "PLANTCODE", "공장",     GridColDataType_emu.VarChar,      100, HAlign.Left,   true, true);
             
-            //생산 계획 편성부
-            GridUtil.InitColumnUltraGrid(grid1, "PLANNO",         "생산계회번호", GridColDataType_emu.VarChar,    130, HAlign.Center, true, false);
-            GridUtil.InitColumnUltraGrid(grid1, "ITEMCODE",       "생산품목",     GridColDataType_emu.VarChar,    150, HAlign.Left,   true, true);
-            GridUtil.InitColumnUltraGrid(grid1, "PLANQTY",        "계획수량",     GridColDataType_emu.Double,     80,  HAlign.Right,  true, true);
-            GridUtil.InitColumnUltraGrid(grid1, "UNITCODE",       "단위",         GridColDataType_emu.VarChar,    80,  HAlign.Left,   true, false);
-            
-            //작업지시 확정부
-            GridUtil.InitColumnUltraGrid(grid1, "CHK",            "확정",         GridColDataType_emu.CheckBox,   80,  HAlign.Center, true, true);
-            GridUtil.InitColumnUltraGrid(grid1, "WORKCENTERCODE", "작업장",       GridColDataType_emu.VarChar,    150, HAlign.Left,   true, true);
-            GridUtil.InitColumnUltraGrid(grid1, "ORDERNO",        "작업지시번호", GridColDataType_emu.VarChar,    130, HAlign.Center, true, false);
-            GridUtil.InitColumnUltraGrid(grid1, "ORDERTEMP",      "확정일시",     GridColDataType_emu.VarChar,    150, HAlign.Left,   true, false);
-            GridUtil.InitColumnUltraGrid(grid1, "ORDERWORKER",    "확정자",       GridColDataType_emu.VarChar,    100, HAlign.Left,   true, false);
-            GridUtil.InitColumnUltraGrid(grid1, "ORDERCLOSEFLAG", "지시종료여부", GridColDataType_emu.VarChar,    100, HAlign.Left,   true, false);
-            GridUtil.InitColumnUltraGrid(grid1, "ORDERCLOSEDATE", "지시종료일시", GridColDataType_emu.DateTime24, 150, HAlign.Left,   true, false);
-                                                                                                                        
-            GridUtil.InitColumnUltraGrid(grid1, "MAKEDATE",        "등록일시",    GridColDataType_emu.DateTime24, 150, HAlign.Left,   true, false);
-            GridUtil.InitColumnUltraGrid(grid1, "MAKER",           "등록자",      GridColDataType_emu.VarChar,    100, HAlign.Left,   true, false);
-            GridUtil.InitColumnUltraGrid(grid1, "EDITDATE",        "수정일시",    GridColDataType_emu.DateTime24, 150, HAlign.Left,   true, false);
-            GridUtil.InitColumnUltraGrid(grid1, "EDITOR",          "수정자",      GridColDataType_emu.VarChar,    100, HAlign.Left,   true, false);
+            // 구매 자재 발주
+            GridUtil.InitColumnUltraGrid(grid1, "PONO",      "발주번호", GridColDataType_emu.VarChar,      130, HAlign.Center, true, false);
+            GridUtil.InitColumnUltraGrid(grid1, "ITEMCODE",  "발주품목", GridColDataType_emu.VarChar,      150, HAlign.Left,   true, true);
+            GridUtil.InitColumnUltraGrid(grid1, "PODATE",    "발주일자", GridColDataType_emu.YearMonthDay, 150, HAlign.Left,   true, true);
+            GridUtil.InitColumnUltraGrid(grid1, "POQTY",     "발주수량", GridColDataType_emu.Double,       80,  HAlign.Right,  true, false);
+            GridUtil.InitColumnUltraGrid(grid1, "UNITCODE",  "단위",     GridColDataType_emu.VarChar,      80,  HAlign.Left,   true, false);
+            GridUtil.InitColumnUltraGrid(grid1, "CUSTCODE",  "거래처",   GridColDataType_emu.VarChar,      150, HAlign.Left,   true, false);
+                                                             
+            //구매 자재 입고                                 
+            GridUtil.InitColumnUltraGrid(grid1, "CHK",       "입고",     GridColDataType_emu.CheckBox,     80,  HAlign.Center, true, true);
+            GridUtil.InitColumnUltraGrid(grid1, "INQTY",     "입고수량", GridColDataType_emu.Double,       80,  HAlign.Right,  true, true);
+            GridUtil.InitColumnUltraGrid(grid1, "LOTNO",     "LOT번호",  GridColDataType_emu.VarChar,      130, HAlign.Center, true, false);
+            GridUtil.InitColumnUltraGrid(grid1, "INDATE",    "입고일자", GridColDataType_emu.VarChar,      100, HAlign.Left,   true, false);
+            GridUtil.InitColumnUltraGrid(grid1, "INWORKER",  "입고자",   GridColDataType_emu.VarChar,      100, HAlign.Left,   true, false);
+                                                                                                                         
+            GridUtil.InitColumnUltraGrid(grid1, "MAKEDATE",  "등록일시", GridColDataType_emu.DateTime24,   150, HAlign.Left,   true, false);
+            GridUtil.InitColumnUltraGrid(grid1, "MAKER",     "등록자",   GridColDataType_emu.VarChar,      100, HAlign.Left,   true, false);
+            GridUtil.InitColumnUltraGrid(grid1, "EDITDATE",  "수정일시", GridColDataType_emu.DateTime24,   150, HAlign.Left,   true, false);
+            GridUtil.InitColumnUltraGrid(grid1, "EDITOR",    "수정자",   GridColDataType_emu.VarChar,      100, HAlign.Left,   true, false);
             GridUtil.SetInitUltraGridBind(grid1); //그리드 데이터 바인딩 초기화
 
             // 2. 콤보박스 셋팅.
@@ -69,15 +69,10 @@ namespace KDT_Form
             Common.FillComboboxMaster(cboPlantCode, dtTemp);             // 콤보박스 컨트롤에 셋팅
             UltraGridUtil.SetComboUltraGrid(grid1, "PLANTCODE", dtTemp); // 그리드에 콤보박스 세팅
 
-            //작업장
-            dtTemp = Common.GET_Workcenter_Code();                  
-            Common.FillComboboxMaster(cboWorkcenterCode, dtTemp);  
-            UltraGridUtil.SetComboUltraGrid(grid1, "WORKCENTERCODE", dtTemp);
-
-            //종료여부
-            dtTemp = Common.StandardCODE("YESNO");
-            Common.FillComboboxMaster(cboOrderCloseFlag, dtTemp);
-            UltraGridUtil.SetComboUltraGrid(grid1, "ORDERCLOSEFLAG", dtTemp); // 작업지시 종료 여부
+            //거래처
+            dtTemp = Common.GET_Cust_Code();                  
+            Common.FillComboboxMaster(cboCustCode, dtTemp);  
+            //UltraGridUtil.SetComboUltraGrid(grid1, "CUSTCODE", dtTemp);
 
             //단위
             dtTemp = Common.StandardCODE("UNITCODE");
@@ -85,7 +80,7 @@ namespace KDT_Form
 
             //품목
             //ROH : 원자재, HLAB : 반제품, FERT : 완제품
-            dtTemp = Common.Get_ItemCode(new string[] {"FERT"});
+            dtTemp = Common.Get_ItemCode(new string[] {"ROH"});
             Common.FillComboboxMaster(cboItemCode, dtTemp);
             UltraGridUtil.SetComboUltraGrid(grid1, "ITEMCODE", dtTemp); // 작업지시 종료 여부
         }
@@ -101,19 +96,21 @@ namespace KDT_Form
             try
             {
                 // 조회조건 변수 등록 및 데이터 대입
-                string sPlantCode      = Convert.ToString(cboPlantCode.Value);      // 공장
-                string sWorkcenterCode = Convert.ToString(cboWorkcenterCode.Value); // 작업장 코드
-                string sOrderNo        = txtOrderNo.Text;                           // 작업지시번호
-                string sOrderCloseFlag = Convert.ToString(cboOrderCloseFlag.Value); // 종료여부
-                string sItemCode       = Convert.ToString(cboItemCode.Value);       // 품목코드
+                string sPlantCode   = Convert.ToString(cboPlantCode.Value);            // 공장
+                string sCustCode    = Convert.ToString(cboCustCode.Value);             // 거래처 코드
+                string sPoNo        = txtPoNO.Text;                                    // 발주 번호
+                string sItemCode    = Convert.ToString(cboItemCode.Value);             // 품목코드
+                string sPOStartDate = string.Format("{0:yyyy-MM-dd}", dtpStart.Value); // 발주 시작일자
+                string sPOEndDate   = string.Format("{0:yyyy-MM-dd}", dtpEnd.Value);   // 발주 종료일자
 
                 DataTable dtTemp = new DataTable();
-                dtTemp = helper.FillTable("04AP_ProductPlan_S1", CommandType.StoredProcedure
-                                           , helper.CreateParameter("@PLANTCODE",      sPlantCode)
-                                           , helper.CreateParameter("@WORKCENTERCODE", sWorkcenterCode)
-                                           , helper.CreateParameter("@ORDERNO",        sOrderNo)
-                                           , helper.CreateParameter("@ORDERCLOSEFLAG", sOrderCloseFlag)
-                                           , helper.CreateParameter("@ITEMCODE",       sItemCode)
+                dtTemp = helper.FillTable("04MM_MaterialOrder_S1", CommandType.StoredProcedure
+                                           , helper.CreateParameter("@PLANTCODE", sPlantCode)
+                                           , helper.CreateParameter("@CUSTCODE",  sCustCode)
+                                           , helper.CreateParameter("@PONO",      sPoNo)
+                                           , helper.CreateParameter("@ITEMCODE",  sItemCode)
+                                           , helper.CreateParameter("@STARTDATE", sPOStartDate)
+                                           , helper.CreateParameter("@ENDDATE",   sPOEndDate)
                                            );
                 
                if(dtTemp.Rows.Count == 0 ) 
@@ -179,7 +176,7 @@ namespace KDT_Form
 
                             //생산계획을 취소
 
-                            helper.ExecuteNoneQuery("04AP_ProductPlan_D1", CommandType.StoredProcedure,
+                            helper.ExecuteNoneQuery("04MM_MaterialOrder_D1", CommandType.StoredProcedure,
                                                     helper.CreateParameter("@PLANTCODE", Convert.ToString(dr["PLANTCODE"])),
                                                     helper.CreateParameter("@PLANNO",    Convert.ToString(dr["PLANNO"]))
                                                     );
@@ -190,7 +187,7 @@ namespace KDT_Form
 
                             if(sMessage != "") throw new Exception(sMessage + "을(를) 입력하지 않았습니다.");
                          
-                            helper.ExecuteNoneQuery("04AP_ProductPlan_I1", CommandType.StoredProcedure,
+                            helper.ExecuteNoneQuery("04MM_MaterialOrder_I1", CommandType.StoredProcedure,
                                                    helper.CreateParameter("@PLANTCODE", Convert.ToString(dr["PLANTCODE"])),
                                                    helper.CreateParameter("@ITEMCODE",  Convert.ToString(dr["ITEMCODE"])),
                                                    helper.CreateParameter("@PLANQTY",   Convert.ToString(dr["PLANQTY"])),
@@ -221,7 +218,7 @@ namespace KDT_Form
                             string sPlanNo = Convert.ToString(dr["PLANNO"]);
                             if (sPlanNo == "") throw new Exception("생산 계획이 확정되지 않은 내역입니다.");
 
-                            helper.ExecuteNoneQuery("04AP_ProductPlan_U1", CommandType.StoredProcedure,
+                            helper.ExecuteNoneQuery("04MM_MaterialOrder_U1", CommandType.StoredProcedure,
                                                    helper.CreateParameter("@PLANTCODE",      Convert.ToString(dr["PLANTCODE"])),
                                                    helper.CreateParameter("@WORKCENTERCODE", sWorkcenterCode),
                                                    helper.CreateParameter("@PLANNO",         sPlanNo),
