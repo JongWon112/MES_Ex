@@ -66,6 +66,12 @@
     <Compile Include="MM_StockMM[자재재고현황].Designer.cs">
       <DependentUpon>MM_StockMM[자재재고현황].cs</DependentUpon>
     </Compile>
+    <Compile Include="MM_StockOut[원자재 생산 출고].cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MM_StockOut[원자재 생산 출고].Designer.cs">
+      <DependentUpon>MM_StockOut[원자재 생산 출고].cs</DependentUpon>
+    </Compile>
     <Compile Include="AP_ProductPlan[생산계획및작지확정].cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +95,18 @@
     </Compile>
     <Compile Include="BM_StopListMaster[비가동항목관리].Designer.cs">
       <DependentUpon>BM_StopListMaster[비가동항목관리].cs</DependentUpon>
+    </Compile>
+    <Compile Include="PP_StockPPRec[공정 재고 입출 이력].cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PP_StockPPRec[공정 재고 입출 이력].designer.cs">
+      <DependentUpon>PP_StockPPRec[공정 재고 입출 이력].cs</DependentUpon>
+    </Compile>
+    <Compile Include="PP_STockPP[공정 재고관리].cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PP_STockPP[공정 재고관리].designer.cs">
+      <DependentUpon>PP_STockPP[공정 재고관리].cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -187,6 +205,9 @@
     <EmbeddedResource Include="MM_StockMM[자재재고현황].resx">
       <DependentUpon>MM_StockMM[자재재고현황].cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MM_StockOut[원자재 생산 출고].resx">
+      <DependentUpon>MM_StockOut[원자재 생산 출고].cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AP_ProductPlan[생산계획및작지확정].resx">
       <DependentUpon>AP_ProductPlan[생산계획및작지확정].cs</DependentUpon>
     </EmbeddedResource>
@@ -198,6 +219,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BM_StopListMaster[비가동항목관리].resx">
       <DependentUpon>BM_StopListMaster[비가동항목관리].cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PP_StockPPRec[공정 재고 입출 이력].resx">
+      <DependentUpon>PP_StockPPRec[공정 재고 입출 이력].cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PP_STockPP[공정 재고관리].resx">
+      <DependentUpon>PP_STockPP[공정 재고관리].cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

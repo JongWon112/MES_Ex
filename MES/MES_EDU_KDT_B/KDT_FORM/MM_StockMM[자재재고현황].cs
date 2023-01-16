@@ -9,6 +9,7 @@
 // *---------------------------------------------------------------------------------------------*
 #endregion
 
+using DC_POPUP;
 using DC00_assm;
 using Infragistics.Win;
 using System;
@@ -237,5 +238,34 @@ namespace KDT_Form
 
         #endregion
 
+        private void btnLOTMake_Click(object sender, EventArgs e)
+        {
+            // 원자재 식별표 발행
+            if (grid1.ActiveRow == null) return; //선택된 행이 없을 때 
+
+            // 바코드 디자이너에 던져 줄 품목 원자재, 품목데이터 변수 설정
+
+            DataRow drRow = ((DataTable)grid1.DataSource).NewRow(); //grid1 모양의 빈 행을 생성
+            drRow["MATLOTNO"] = Convert.ToString(grid1.ActiveRow.Cells["MATLOTNO"].Value);
+            drRow["ITEMCODE"]  = Convert.ToString(grid1.ActiveRow.Cells["ITEMCODE"].Value);
+            drRow["ITEMNAME"]  = Convert.ToString(grid1.ActiveRow.Cells["ITEMNAME"].Value);
+            drRow["STOCKQTY"]  = Convert.ToString(grid1.ActiveRow.Cells["STOCKQTY"].Value);
+            drRow["UNITCODE"]  = Convert.ToString(grid1.ActiveRow.Cells["UNITCODE"].Value);
+
+            // 바코드 디자이너에 출력할 식별표 데이터 매핑
+            Report_LotBacodeROH ROH_BARCODE = new Report_LotBacodeROH(); // 바코드 디자이너 객체 생성
+            Telerik.Reporting.ReportBook reportBook = new Telerik.Reporting.ReportBook(); // 레포트 북 객체 생성
+
+            // 바코드 디자인 객체에 데이터 매핑
+            ROH_BARCODE.DataSource = drRow;
+
+            // 디자인을 레포트 북에 등록.
+            reportBook.Reports.Add(ROH_BARCODE);
+
+            // 바코드 디자이너 뷰어(미리보기) 에 레포트 북 등록 및 표현
+            ReportViewer Viewer = new ReportViewer(reportBook, 1);
+            Viewer.ShowDialog();
+
+        }
     }
 }
