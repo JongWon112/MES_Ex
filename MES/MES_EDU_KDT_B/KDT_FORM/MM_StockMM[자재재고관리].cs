@@ -123,12 +123,7 @@ namespace KDT_Form
 
         public override void DoNew()
         {
-            grid1.InsertRow();
-
-            //기본갑 세팅
-            grid1.SetDefaultValue("PLANTCODE", LoginInfo.PlantCode);
-            grid1.SetDefaultValue("CHK", 0); // 확정체크
-            grid1.SetDefaultValue("PODATE", string.Format("{0:yyyy-MM-dd}",DateTime.Now)); // 오늘일자
+     
         }
 
         public override void DoDelete()

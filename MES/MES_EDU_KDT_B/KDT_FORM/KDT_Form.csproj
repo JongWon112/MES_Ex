@@ -60,11 +60,17 @@
     <Compile Include="MM_StockMMRec[자재입출고 이력].Designer.cs">
       <DependentUpon>MM_StockMMRec[자재입출고 이력].cs</DependentUpon>
     </Compile>
-    <Compile Include="MM_StockMM[자재재고현황].cs">
+    <Compile Include="PP_ActureOutput[생산실적등록].cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MM_StockMM[자재재고현황].Designer.cs">
-      <DependentUpon>MM_StockMM[자재재고현황].cs</DependentUpon>
+    <Compile Include="PP_ActureOutput[생산실적등록].Designer.cs">
+      <DependentUpon>PP_ActureOutput[생산실적등록].cs</DependentUpon>
+    </Compile>
+    <Compile Include="MM_StockMM[자재재고관리].cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MM_StockMM[자재재고관리].Designer.cs">
+      <DependentUpon>MM_StockMM[자재재고관리].cs</DependentUpon>
     </Compile>
     <Compile Include="MM_StockOut[원자재 생산 출고].cs">
       <SubType>Form</SubType>
@@ -202,8 +208,11 @@
     <EmbeddedResource Include="MM_StockMMRec[자재입출고 이력].resx">
       <DependentUpon>MM_StockMMRec[자재입출고 이력].cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MM_StockMM[자재재고현황].resx">
-      <DependentUpon>MM_StockMM[자재재고현황].cs</DependentUpon>
+    <EmbeddedResource Include="PP_ActureOutput[생산실적등록].resx">
+      <DependentUpon>PP_ActureOutput[생산실적등록].cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MM_StockMM[자재재고관리].resx">
+      <DependentUpon>MM_StockMM[자재재고관리].cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MM_StockOut[원자재 생산 출고].resx">
       <DependentUpon>MM_StockOut[원자재 생산 출고].cs</DependentUpon>
