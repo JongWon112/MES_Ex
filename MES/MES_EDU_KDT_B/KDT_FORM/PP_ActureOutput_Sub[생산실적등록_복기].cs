@@ -1,6 +1,6 @@
 ﻿#region < HEADER AREA >
 // *---------------------------------------------------------------------------------------------*
-//   Form ID      : PP_ActureOutput
+//   Form ID      : PP_ActureOutput_Sub
 //   Form Name    : 자재 재고 현황
 //   Name Space   : KDT_Form
 //   Created Date : 2023-01-04
@@ -24,11 +24,11 @@ using System.Windows.Forms;
 
 namespace KDT_Form
 {
-    public partial class PP_ActureOutput : DC00_WinForm.BaseMDIChildForm
+    public partial class PP_ActureOutput_Sub : DC00_WinForm.BaseMDIChildForm
     {
         #region < MEMBER AREA >
         UltraGridUtil GridUtil = new UltraGridUtil(); //그리드를 셋팅하는 클래스
-        public PP_ActureOutput()
+        public PP_ActureOutput_Sub()
         {
             InitializeComponent();
         }
@@ -36,7 +36,7 @@ namespace KDT_Form
 
         #region < EVENT AREA >
 
-        private void PP_ActureOutput_Load(object sender, EventArgs e)
+        private void PP_ActureOutput_Sub_Load(object sender, EventArgs e)
         {
              // 1. 그리드 셋팅
            
@@ -103,7 +103,7 @@ namespace KDT_Form
           
 
                 DataTable dtTemp = new DataTable();
-                dtTemp = helper.FillTable("04PP_ActureOutput_S1", CommandType.StoredProcedure
+                dtTemp = helper.FillTable("04PP_ActureOutput_Sub_S1", CommandType.StoredProcedure
                                            , helper.CreateParameter("@PLANTCODE",      sPlantCode)
                                            , helper.CreateParameter("@WORKCENTERCODE", sWorkCenterCode)
                                            );
@@ -172,7 +172,7 @@ namespace KDT_Form
 
                             //생산계획을 취소
 
-                            helper.ExecuteNoneQuery("04PP_ActureOutput_D1", CommandType.StoredProcedure,
+                            helper.ExecuteNoneQuery("04PP_ActureOutput_Sub_D1", CommandType.StoredProcedure,
                                                     helper.CreateParameter("@PLANTCODE", Convert.ToString(dr["PLANTCODE"])),
                                                     helper.CreateParameter("@PLANNO",    Convert.ToString(dr["PLANNO"]))
                                                     );
@@ -187,7 +187,7 @@ namespace KDT_Form
 
                             if(sMessage != "") throw new Exception(sMessage + "을(를) 입력하지 않았습니다.");
                          
-                            helper.ExecuteNoneQuery("04PP_ActureOutput_I1", CommandType.StoredProcedure,
+                            helper.ExecuteNoneQuery("04PP_ActureOutput_Sub_I1", CommandType.StoredProcedure,
                                                    helper.CreateParameter("@PLANTCODE", Convert.ToString(dr["PLANTCODE"])),
                                                    helper.CreateParameter("@ITEMCODE",  Convert.ToString(dr["ITEMCODE"])),
                                                    helper.CreateParameter("@POQTY",     Convert.ToString(dr["POQTY"])),
@@ -204,7 +204,7 @@ namespace KDT_Form
                      
                             if (Convert.ToString(dr["INQTY"]) == "") throw new Exception("입고수량을 입력하지 않았습니다.");
 
-                            helper.ExecuteNoneQuery("04PP_ActureOutput_U1", CommandType.StoredProcedure,
+                            helper.ExecuteNoneQuery("04PP_ActureOutput_Sub_U1", CommandType.StoredProcedure,
                                                    helper.CreateParameter("@PLANTCODE", Convert.ToString(dr["PLANTCODE"])),
                                                    helper.CreateParameter("@PONO",      Convert.ToString(dr["PONO"])),
                                                    helper.CreateParameter("@INQTY",     Convert.ToString(dr["INQTY"])),
@@ -273,7 +273,7 @@ namespace KDT_Form
                 string sWorkCenterCode = Convert.ToString(grid1.ActiveRow.Cells["WORKCENTERCODE"].Value);
                 string sPlantCode      = Convert.ToString(grid1.ActiveRow.Cells["PLANTCODE"].Value);
 
-                helper.ExecuteNoneQuery("04PP_ActureOutput_I1"
+                helper.ExecuteNoneQuery("04PP_ActureOutput_Sub_I1"
                                             , CommandType.StoredProcedure
                                             , helper.CreateParameter("@PLANTCODE", sPlantCode)
                                             , helper.CreateParameter("@WORKCENTERCODE", sWorkCenterCode)

@@ -1,6 +1,6 @@
 ﻿namespace KDT_Form
 {
-    partial class PP_ActureOutput
+    partial class PP_ActureOutput_Sub
     {
         /// <summary>
         /// 필수 디자이너 변수입니다.
@@ -432,12 +432,12 @@
             this.btnOrderClose.TabIndex = 7;
             this.btnOrderClose.Text = "(7)작업지시종료";
             // 
-            // PP_ActureOutput
+            // PP_ActureOutput_Sub
             // 
             this.ClientSize = new System.Drawing.Size(1249, 651);
-            this.Name = "PP_ActureOutput";
+            this.Name = "PP_ActureOutput_Sub";
             this.Text = "생산 실적 등록";
-            this.Load += new System.EventHandler(this.PP_ActureOutput_Load);
+            this.Load += new System.EventHandler(this.PP_ActureOutput_Sub_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gbxHeader)).EndInit();
             this.gbxHeader.ResumeLayout(false);
             this.gbxHeader.PerformLayout();

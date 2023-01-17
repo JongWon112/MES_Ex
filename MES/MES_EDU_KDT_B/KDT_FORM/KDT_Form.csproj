@@ -60,6 +60,12 @@
     <Compile Include="MM_StockMMRec[자재입출고 이력].Designer.cs">
       <DependentUpon>MM_StockMMRec[자재입출고 이력].cs</DependentUpon>
     </Compile>
+    <Compile Include="PP_ActureOutput_Sub[생산실적등록_복기].cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PP_ActureOutput_Sub[생산실적등록_복기].Designer.cs">
+      <DependentUpon>PP_ActureOutput_Sub[생산실적등록_복기].cs</DependentUpon>
+    </Compile>
     <Compile Include="PP_ActureOutput[생산실적등록].cs">
       <SubType>Form</SubType>
     </Compile>
@@ -207,6 +213,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MM_StockMMRec[자재입출고 이력].resx">
       <DependentUpon>MM_StockMMRec[자재입출고 이력].cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PP_ActureOutput_Sub[생산실적등록_복기].resx">
+      <DependentUpon>PP_ActureOutput_Sub[생산실적등록_복기].cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PP_ActureOutput[생산실적등록].resx">
       <DependentUpon>PP_ActureOutput[생산실적등록].cs</DependentUpon>
