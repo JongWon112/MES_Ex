@@ -232,11 +232,67 @@ namespace KDT_Form
             }
 
             //작업장이 비가동 상태인지 CHK
-            if (grid1.ActiveRow.Cells["WORKSTATUSCODE"].Value == "R") // 가동 중일 때
+            if (Convert.ToString(grid1.ActiveRow.Cells["WORKSTATUSCODE"].Value) == "R") // 가동 중일 때
             {
                 ShowDialog("현재 작업장이 가동 중입니다. \r\n비가동 등록 후 진행하세요.");
                 return;
             }
+
+            //LOT 투입 여부
+            if (Convert.ToString(grid1.ActiveRow.Cells["MATLOTNO"].Value) != "")
+            {
+                ShowDialog("작업장에 투입된 원자재 LOT의 정보가 존재합니다. \r\n 투입을 취소 후 진행하세요.");
+                return;
+            }
+            // 작업지시를 선택 할 작업장 정보 변수에 담기.
+            string sWorkcenterCode = Convert.ToString(grid1.ActiveRow.Cells["WORKCENTERCODE"].Value);
+            string sWorkcenterName = Convert.ToString(grid1.ActiveRow.Cells["WORKCENTERNAME"].Value);
+
+
+            POP_ORDERNO orderPopup = new POP_ORDERNO(sWorkcenterCode, sWorkcenterName);
+
+            orderPopup.ShowDialog(); // Show() -> 팝업 닫히기 전에 아래 로직 실행, ShowDialog() -> 팝업이 닫힐 때 까지 아래 로직이 실행 x (대기)
+            string dOrderNo = Convert.ToString(orderPopup.Tag);
+            if (dOrderNo == "") return;
+
+            //선택한 작업지시 등록 로직
+            DBHelper helper = new DBHelper();
+            try
+            {
+                string sPlantCode = Convert.ToString(grid1.ActiveRow.Cells["PLANTCODE"].Value);
+
+                helper.ExecuteNoneQuery("04PP_ActureOutput_I2" , CommandType.StoredProcedure
+                                            , helper.CreateParameter("@PLANTCODE", sPlantCode)
+                                            , helper.CreateParameter("@WORKCENTERCODE", sWorkcenterCode)
+                                            , helper.CreateParameter("@ORDERNO", dOrderNo)
+                                            , helper.CreateParameter("@WORKERID", sWorkerId)
+                                            );
+
+                if (helper.RSCODE == "E")
+                {
+                    this.ShowDialog(helper.RSMSG, DialogForm.DialogType.OK);
+                    helper.Rollback();
+                    return;
+                }
+
+                helper.Commit();
+                ShowDialog("작업지시 등록을 완료하였습니다.");
+                DoInquire();
+
+                helper.Commit();
+
+            }
+            catch(Exception ex)
+            {
+                helper.Rollback();
+                ShowDialog(ex.ToString());
+            }
+            finally
+            {
+                helper.Close();
+            }
+
+
         }
 
         #endregion
