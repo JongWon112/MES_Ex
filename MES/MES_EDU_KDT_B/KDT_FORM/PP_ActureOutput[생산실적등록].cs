@@ -127,6 +127,11 @@ namespace KDT_Form
             }
         }
 
+        private void cboWorkcenter_ValueChanged(object sender, EventArgs e)
+        {
+            DoInquire();
+        }
+
         //public override void DoNew()
         //{
         //    grid1.InsertRow();
@@ -150,10 +155,7 @@ namespace KDT_Form
         #endregion
 
 
-        private void cboWorkcenter_ValueChanged(object sender, EventArgs e)
-        {
-            DoInquire();
-        }
+      
 
         #region < 2. 작업자 등록 >
         private void btnWorkerReg_Click(object sender, EventArgs e)
@@ -214,6 +216,20 @@ namespace KDT_Form
         {
             txtWorkerID.Text   = Convert.ToString(grid1.ActiveRow.Cells["WORKER"].Value);
             txtWorkerName.Text = Convert.ToString(grid1.ActiveRow.Cells["WORKERNAME"].Value);
+
+            // lot 투입 내역 조회 및 투입/투입취소 버튼으로 변경
+            string sLotNo = Convert.ToString(grid1.ActiveRow.Cells["MATLOTNO"].Value);
+            if(sLotNo == "")
+            {
+                btnLOTIn.Text = "(4) LOT 투입";
+                txtINLotNo.Text = "";
+            }
+            else
+            {
+                btnLOTIn.Text = "(4) LOT 투입 취소";
+                txtINLotNo.Text = sLotNo;
+            }
+
         }
         #endregion
 
@@ -256,7 +272,7 @@ namespace KDT_Form
             if (dOrderNo == "") return;
 
             //선택한 작업지시 등록 로직
-            DBHelper helper = new DBHelper();
+            DBHelper helper = new DBHelper(true);
             try
             {
                 string sPlantCode = Convert.ToString(grid1.ActiveRow.Cells["PLANTCODE"].Value);
@@ -293,6 +309,77 @@ namespace KDT_Form
             }
 
 
+        }
+
+        #endregion
+
+        #region < LOT 투입 >
+        private void btnLOTIn_Click(object sender, EventArgs e)
+        {
+            if(grid1.ActiveRow == null ) return;
+
+            DBHelper helper = new DBHelper(true);
+            try
+            {
+                string sOrderNo = Convert.ToString(grid1.ActiveRow.Cells["ORDERNO"].Value);
+                if(sOrderNo == "")
+                {
+                    ShowDialog("등록된 작업지시가 없습니다. \r\n 작업지시 등록 후 진행하세요.");
+                    return;
+                }
+
+                string sWorkerId = Convert.ToString(grid1.ActiveRow.Cells["WORKER"].Value);
+                if (sWorkerId == "")
+                {
+                    ShowDialog("등록된 작업자가 없습니다. \r\n 작업자 등록 후 진행하세요.");
+                    return;
+                }
+
+                string sInCancleFlag = "IN"; // LOT 투입/취소 여부
+                if (btnLOTIn.Text != "(4) LOT 투입") sInCancleFlag = "OUT";
+                
+                string sItemCode       = Convert.ToString(grid1.ActiveRow.Cells["ITEMCODE"].Value);
+                string sPlantCode      = Convert.ToString(grid1.ActiveRow.Cells["PLANTCODE"].Value);
+                string sWorkcenterCode = Convert.ToString(grid1.ActiveRow.Cells["WORKCENTERCODE"].Value);
+                string sUnitCode       = Convert.ToString(grid1.ActiveRow.Cells["UNITCODE"].Value);
+                string sLoTNo          = txtINLotNo.Text;
+                
+                
+
+                helper.ExecuteNoneQuery("04PP_ActureOutput_I3", CommandType.StoredProcedure
+                                            , helper.CreateParameter("@PLANTCODE",      sPlantCode)
+                                            , helper.CreateParameter("@WORKCENTERCODE", sWorkcenterCode)
+                                            , helper.CreateParameter("@ORDERNO",        sOrderNo)
+                                            , helper.CreateParameter("@WORKERID",       sWorkerId)
+                                            , helper.CreateParameter("@LOTNO",          sLoTNo)
+                                            , helper.CreateParameter("@ITEMCODE",       sItemCode)
+                                            , helper.CreateParameter("@UNITCODE",       sUnitCode)
+                                            , helper.CreateParameter("@INCANCLEFLAG",   sInCancleFlag)
+                                            );
+
+                if (helper.RSCODE == "E")
+                {
+                    this.ShowDialog(helper.RSMSG, DialogForm.DialogType.OK);
+                    helper.Rollback();
+                    return;
+                }
+
+                helper.Commit();
+                ShowDialog("LOT 투입/취소 등록을 완료하였습니다.");
+                DoInquire();
+
+                helper.Commit();
+
+            }
+            catch (Exception ex)
+            {
+                helper.Rollback();
+                ShowDialog(ex.ToString());
+            }
+            finally
+            {
+                helper.Close();
+            }
         }
 
         #endregion
