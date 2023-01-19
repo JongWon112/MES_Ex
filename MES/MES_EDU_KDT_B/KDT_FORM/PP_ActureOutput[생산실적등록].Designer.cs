@@ -368,6 +368,7 @@
             this.btnRunStop.Size = new System.Drawing.Size(173, 97);
             this.btnRunStop.TabIndex = 7;
             this.btnRunStop.Text = "(5)가동";
+            this.btnRunStop.Click += new System.EventHandler(this.btnRunStop_Click);
             // 
             // txtProdQty
             // 
@@ -424,6 +425,7 @@
             this.btnProdReg.Size = new System.Drawing.Size(165, 38);
             this.btnProdReg.TabIndex = 7;
             this.btnProdReg.Text = "(6)생산 실적 등록";
+            this.btnProdReg.Click += new System.EventHandler(this.btnProdReg_Click);
             // 
             // btnOrderClose
             // 

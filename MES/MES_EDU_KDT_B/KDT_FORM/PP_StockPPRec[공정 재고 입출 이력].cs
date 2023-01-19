@@ -75,7 +75,7 @@ namespace KDT_Form
             rtnDtTemp = Common.StandardCODE("UNITCODE");     //단위
             UltraGridUtil.SetComboUltraGrid(this.grid1, "UNITCODE", rtnDtTemp);
              
-            rtnDtTemp = Common.Get_ItemCode(new string[] { "ROH" });
+            rtnDtTemp = Common.Get_ItemCode(new string[] { "ROH", "FERT" });
             Common.FillComboboxMaster(this.cboItemCode, rtnDtTemp);
 
 

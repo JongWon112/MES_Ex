@@ -76,7 +76,6 @@
             this.gbxHeader.ContentPadding.Right = 2;
             this.gbxHeader.ContentPadding.Top = 4;
             this.gbxHeader.Controls.Add(this.txtLotNo);
-            this.gbxHeader.Controls.Add(this.sLabel3);
             this.gbxHeader.Controls.Add(this.sLabel2);
             this.gbxHeader.Controls.Add(this.sLabel1);
             this.gbxHeader.Controls.Add(this.dtEnddate);
@@ -85,6 +84,7 @@
             this.gbxHeader.Controls.Add(this.cboPlantCode);
             this.gbxHeader.Controls.Add(this.lblItemCode);
             this.gbxHeader.Controls.Add(this.lblPlantCode);
+            this.gbxHeader.Controls.Add(this.sLabel3);
             this.gbxHeader.Location = new System.Drawing.Point(3, 3);
             this.gbxHeader.Size = new System.Drawing.Size(1292, 65);
             // 
@@ -139,7 +139,7 @@
             this.cboPlantCode.Font = new System.Drawing.Font("맑은 고딕", 10F);
             this.cboPlantCode.Location = new System.Drawing.Point(112, 21);
             this.cboPlantCode.Name = "cboPlantCode";
-            this.cboPlantCode.Size = new System.Drawing.Size(145, 32);
+            this.cboPlantCode.Size = new System.Drawing.Size(145, 27);
             this.cboPlantCode.TabIndex = 0;
             // 
             // grid1
@@ -234,7 +234,7 @@
             this.cboItemCode.Font = new System.Drawing.Font("맑은 고딕", 10F);
             this.cboItemCode.Location = new System.Drawing.Point(352, 22);
             this.cboItemCode.Name = "cboItemCode";
-            this.cboItemCode.Size = new System.Drawing.Size(145, 32);
+            this.cboItemCode.Size = new System.Drawing.Size(235, 27);
             this.cboItemCode.TabIndex = 187;
             // 
             // sLabel2
@@ -279,7 +279,7 @@
             this.dtEnddate.Location = new System.Drawing.Point(1164, 20);
             this.dtEnddate.Name = "dtEnddate";
             this.dtEnddate.NonAutoSizeHeight = 32;
-            this.dtEnddate.Size = new System.Drawing.Size(121, 32);
+            this.dtEnddate.Size = new System.Drawing.Size(121, 26);
             this.dtEnddate.TabIndex = 194;
             // 
             // dtStartDate
@@ -288,15 +288,15 @@
             this.dtStartDate.Location = new System.Drawing.Point(1021, 20);
             this.dtStartDate.Name = "dtStartDate";
             this.dtStartDate.NonAutoSizeHeight = 32;
-            this.dtStartDate.Size = new System.Drawing.Size(121, 32);
+            this.dtStartDate.Size = new System.Drawing.Size(121, 26);
             this.dtStartDate.TabIndex = 193;
             // 
             // txtLotNo
             // 
             this.txtLotNo.Font = new System.Drawing.Font("맑은 고딕", 10F);
-            this.txtLotNo.Location = new System.Drawing.Point(597, 22);
+            this.txtLotNo.Location = new System.Drawing.Point(646, 22);
             this.txtLotNo.Name = "txtLotNo";
-            this.txtLotNo.Size = new System.Drawing.Size(313, 30);
+            this.txtLotNo.Size = new System.Drawing.Size(313, 25);
             this.txtLotNo.TabIndex = 237;
             // 
             // sLabel3
@@ -310,7 +310,7 @@
             this.sLabel3.BorderStyleInner = Infragistics.Win.UIElementBorderStyle.None;
             this.sLabel3.DbField = null;
             this.sLabel3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.sLabel3.Location = new System.Drawing.Point(508, 26);
+            this.sLabel3.Location = new System.Drawing.Point(557, 26);
             this.sLabel3.Name = "sLabel3";
             this.sLabel3.RequireFlag = DC00_Component.SLabel.RequireFlagEnum.NO;
             this.sLabel3.Size = new System.Drawing.Size(83, 23);
