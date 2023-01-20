@@ -82,7 +82,7 @@ namespace KDT_Form
             Common.FillComboboxMaster(this.cboWorkcenter, dtTemp);
 
 
-            //작업장 팝업 호출
+            //작업자 팝업 호출
             BizTextBoxManager btbManger = new BizTextBoxManager();
             btbManger.PopUpAdd(txtWorkerID, txtWorkerName, "WORKER_MASTER");
         }
@@ -562,6 +562,59 @@ namespace KDT_Form
                 helper.Close();
             }
         }
+        #endregion
+
+        #region < 7. 작업지시 종료 > 
+
+        private void btnOrderClose_Click(object sender, EventArgs e)
+        {
+            if (grid1.ActiveRow == null || grid1.Rows.Count == 0) return;
+
+            string sMatLotNo = Convert.ToString(grid1.ActiveRow.Cells["MATLOTNO"].Value);
+            string sRunStop = Convert.ToString(grid1.ActiveRow.Cells["WORKSTATUSCODE"].Value);
+
+            if (sMatLotNo != "")
+            {
+                ShowDialog("투입 LOT가 존재 합니다. LOT 투입 취소 후 진행하세요.");
+                return;
+            }
+
+            if (sRunStop == "R")
+            {
+                ShowDialog("작업장이 가동 상태입니다. 비가동 등록 후 진행하세요.");
+                return;
+            }
+
+            DBHelper helper = new DBHelper(true);
+
+            try
+            {
+                string sPlantCode      = Convert.ToString(grid1.ActiveRow.Cells["PLANTCODE"].Value);
+                string sWorkcenterCode = Convert.ToString(grid1.ActiveRow.Cells["WORKCENTERCODE"].Value);
+                string sOrderNo        = Convert.ToString(grid1.ActiveRow.Cells["ORDERNO"].Value);
+                helper.ExecuteNoneQuery("04PP_ActureOutput_I6", CommandType.StoredProcedure,
+                                        helper.CreateParameter("@PLANTCODE",      sPlantCode),
+                                        helper.CreateParameter("@WORKCENTERCODE", sWorkcenterCode),
+                                        helper.CreateParameter("@ORDERNO",        sOrderNo)
+                                        ); 
+
+
+                if (helper.RSCODE != "S") throw new Exception(helper.RSMSG);
+                helper.Commit();
+                ShowDialog("작업지시가 종료되었습니다.");
+                DoInquire();
+            }
+            catch(Exception ex)
+            {
+                helper.Rollback();
+                ShowDialog(ex.ToString());
+            }
+            finally 
+            {
+                helper.Close(); 
+            }
+        }
+
         #endregion
     }
 }

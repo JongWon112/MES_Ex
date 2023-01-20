@@ -434,6 +434,7 @@
             this.btnOrderClose.Size = new System.Drawing.Size(136, 97);
             this.btnOrderClose.TabIndex = 7;
             this.btnOrderClose.Text = "(7)작업지시종료";
+            this.btnOrderClose.Click += new System.EventHandler(this.btnOrderClose_Click);
             // 
             // PP_ActureOutput
             // 
