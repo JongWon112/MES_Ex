@@ -318,6 +318,12 @@
     <Compile Include="Report_LotBacodeFERT.designer.cs">
       <DependentUpon>Report_LotBacodeFERT.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report_LotBacodeFERT_1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report_LotBacodeFERT_1.designer.cs">
+      <DependentUpon>Report_LotBacodeFERT_1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report_specification_on_transaction.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -357,6 +363,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report_LotBacodeFERT.resx">
       <DependentUpon>Report_LotBacodeFERT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report_LotBacodeFERT_1.resx">
+      <DependentUpon>Report_LotBacodeFERT_1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report_specification_on_transaction.resx">
       <DependentUpon>Report_specification_on_transaction.cs</DependentUpon>

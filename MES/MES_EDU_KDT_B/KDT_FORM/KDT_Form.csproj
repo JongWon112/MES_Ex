@@ -54,6 +54,12 @@
     <Compile Include="PP_StockWIPRec[재공 재고 입출 이력].designer.cs">
       <DependentUpon>PP_StockWIPRec[재공 재고 입출 이력].cs</DependentUpon>
     </Compile>
+    <Compile Include="WM_StockOutWm[제품 출고 등록].cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WM_StockOutWm[제품 출고 등록].designer.cs">
+      <DependentUpon>WM_StockOutWm[제품 출고 등록].cs</DependentUpon>
+    </Compile>
     <Compile Include="PP_StockWIP[재공 재고조회].cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,12 +89,6 @@
     </Compile>
     <Compile Include="MM_StockMMRec[자재입출고 이력].Designer.cs">
       <DependentUpon>MM_StockMMRec[자재입출고 이력].cs</DependentUpon>
-    </Compile>
-    <Compile Include="PP_ActureOutput_Sub[생산실적등록_복기].cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PP_ActureOutput_Sub[생산실적등록_복기].Designer.cs">
-      <DependentUpon>PP_ActureOutput_Sub[생산실적등록_복기].cs</DependentUpon>
     </Compile>
     <Compile Include="PP_ActureOutput[생산실적등록].cs">
       <SubType>Form</SubType>
@@ -149,6 +149,24 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="WM_ProdInStock[제품창고 입고].cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WM_ProdInStock[제품창고 입고].designer.cs">
+      <DependentUpon>WM_ProdInStock[제품창고 입고].cs</DependentUpon>
+    </Compile>
+    <Compile Include="WM_StockShip[제품재고 상차 등록].cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WM_StockShip[제품재고 상차 등록].designer.cs">
+      <DependentUpon>WM_StockShip[제품재고 상차 등록].cs</DependentUpon>
+    </Compile>
+    <Compile Include="WM_StockWmRec[제품창고 현황 및 이력].cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WM_StockWmRec[제품창고 현황 및 이력].designer.cs">
+      <DependentUpon>WM_StockWmRec[제품창고 현황 및 이력].cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -235,6 +253,9 @@
     <EmbeddedResource Include="PP_StockWIPRec[재공 재고 입출 이력].resx">
       <DependentUpon>PP_StockWIPRec[재공 재고 입출 이력].cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WM_StockOutWm[제품 출고 등록].resx">
+      <DependentUpon>WM_StockOutWm[제품 출고 등록].cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PP_StockWIP[재공 재고조회].resx">
       <DependentUpon>PP_StockWIP[재공 재고조회].cs</DependentUpon>
     </EmbeddedResource>
@@ -249,9 +270,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MM_StockMMRec[자재입출고 이력].resx">
       <DependentUpon>MM_StockMMRec[자재입출고 이력].cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PP_ActureOutput_Sub[생산실적등록_복기].resx">
-      <DependentUpon>PP_ActureOutput_Sub[생산실적등록_복기].cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PP_ActureOutput[생산실적등록].resx">
       <DependentUpon>PP_ActureOutput[생산실적등록].cs</DependentUpon>
@@ -284,6 +302,15 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WM_ProdInStock[제품창고 입고].resx">
+      <DependentUpon>WM_ProdInStock[제품창고 입고].cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WM_StockShip[제품재고 상차 등록].resx">
+      <DependentUpon>WM_StockShip[제품재고 상차 등록].cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WM_StockWmRec[제품창고 현황 및 이력].resx">
+      <DependentUpon>WM_StockWmRec[제품창고 현황 및 이력].cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
