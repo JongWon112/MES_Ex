@@ -75,7 +75,7 @@ namespace KDT_Form
             UltraGridUtil.SetComboUltraGrid(this.grid1, "PLANTCODE", rtnDtTemp);
 
             rtnDtTemp = Common.GET_Workcenter_Code();  // 작업장
-            Common.FillComboboxMaster(this.cboWorkcentercode, rtnDtTemp);
+           //' Common.FillComboboxMaster(this.cboWorkcentercode, rtnDtTemp);
 
             rtnDtTemp = Common.GET_StopList();
             UltraGridUtil.SetComboUltraGrid(this.grid1, "REMARK", rtnDtTemp);
